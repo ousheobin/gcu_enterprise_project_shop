@@ -1,14 +1,9 @@
 package cn.shaobin.entity;
 
-/**
- * ShopCar 数据传输类
- * 
- * @author CHUNLONG.LUO
- * @email 584614151@qq.com
- * @date 2016-06-21 14:07:38
- * @version 1.0
- */
-public class ShopCar implements java.io.Serializable {
+import org.apache.ibatis.type.Alias;
+
+@Alias(value="ShopCarEntity")
+public class ShopCarEntity implements java.io.Serializable {
 
 	private static final long serialVersionUID = -5696573633770345711L;
 	
@@ -17,13 +12,13 @@ public class ShopCar implements java.io.Serializable {
 	private Integer buyNum;
 	private Integer userId;
 
-	private Article article;// 物品信息
+	private ArticleEntity article;// 物品信息
 
-	public Article getArticle() {
+	public ArticleEntity getArticle() {
 		return article;
 	}
 
-	public void setArticle(Article article) {
+	public void setArticle(ArticleEntity article) {
 		this.article = article;
 	}
 

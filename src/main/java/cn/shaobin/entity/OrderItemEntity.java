@@ -1,25 +1,21 @@
 package cn.shaobin.entity;
 
-/**
- * OrderItem 数据传输类
- * @author CHUNLONG.LUO
- * @email 584614151@qq.com
- * @date 2016-06-21 14:07:38
- * @version 1.0
- */
-public class OrderItem implements java.io.Serializable{
+import org.apache.ibatis.type.Alias;
+
+@Alias(value="OrderItemEntity")
+public class OrderItemEntity implements java.io.Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	private int orderId;
 	private int articleId;
 	private int orderNum;
-	private Article article;//封装物品信息
+	private ArticleEntity article;//封装物品信息
 
-	public Article getArticle() {
+	public ArticleEntity getArticle() {
 		return article;
 	}
-	public void setArticle(Article article) {
+	public void setArticle(ArticleEntity article) {
 		this.article = article;
 	}
 	/** setter and getter method */

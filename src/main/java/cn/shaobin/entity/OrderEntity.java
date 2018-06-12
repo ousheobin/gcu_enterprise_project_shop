@@ -2,14 +2,10 @@ package cn.shaobin.entity;
 
 import java.util.List;
 
-/**
- * Order 数据传输类
- * @author CHUNLONG.LUO
- * @email 584614151@qq.com
- * @date 2016-06-21 14:07:38
- * @version 1.0
- */
-public class Order implements java.io.Serializable{
+import org.apache.ibatis.type.Alias;
+
+@Alias(value="OrderEntity")
+public class OrderEntity implements java.io.Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private int id;
@@ -20,12 +16,12 @@ public class Order implements java.io.Serializable{
 	private double amount;
 	private int userId;
 	
-	private List<OrderItem> items;//封装订单明细数据
+	private List<OrderItemEntity> items;//封装订单明细数据
 
-	public List<OrderItem> getItems() {
+	public List<OrderItemEntity> getItems() {
 		return items;
 	}
-	public void setItems(List<OrderItem> items) {
+	public void setItems(List<OrderItemEntity> items) {
 		this.items = items;
 	}
 	/** setter and getter method */
