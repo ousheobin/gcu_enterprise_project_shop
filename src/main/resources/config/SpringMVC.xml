@@ -14,14 +14,16 @@
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
-	<!-- 扫描业务逻辑包-->
 	<context:component-scan base-package="cn.shaobin.controller"/>
+	<context:component-scan base-package="cn.shaobin.service"/>
+	<context:component-scan base-package="cn.shaobin.dao"/>
+	
     <context:property-placeholder location="classpath:config/config.properties" />
     
     <!-- 静态资源准许规则 -->
     <mvc:resources location="/css/"  mapping="/css/**"  cache-period="3600" />
     <mvc:resources location="/js/"  mapping="/js/**"  cache-period="3600" />
-    <mvc:resources location="/img/"  mapping="/img/**"  cache-period="3600" />
+    <mvc:resources location="/images/"  mapping="/images/**"  cache-period="3600" />
 
 	<!-- 配置Viewer-->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

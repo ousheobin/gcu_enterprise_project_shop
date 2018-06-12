@@ -54,9 +54,9 @@
 	﻿	<div class="nav">
 			<div class="w960 center">
 				<ul>
-					<li><a title="首页" href="index.do">首页</a></li>
+					<li><a title="首页" href="index.html">首页</a></li>
 					<c:forEach items="${firstArticleTypes}" var="firstArticleType" >
-						<li><a title="${firstArticleType.name}" href="${ctx}/index.do?typecode=${firstArticleType.code}">${firstArticleType.name}</a></li>
+						<li><a title="${firstArticleType.name}" href="${ctx}/index.html?typecode=${firstArticleType.code}">${firstArticleType.name}</a></li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -64,7 +64,7 @@
 	</div>
 	<!--header end-->
 	
-	<form name="loginform" method="post" action="login.do" id="loginform">
+	<form name="loginform" method="post" action="login.html" id="loginform">
 		<br />
 		<input type="hidden" name="method" value="submitTable"/>
 		<div class="login_main" style="background: url(images/login_bg.jpg) no-repeat center 0;">
@@ -74,7 +74,7 @@
 					<div class="login_frame_border">
 						<div class="login_frame">
 							<div class="login_title">
-								<font color="red">${message}</font>还不是商城用户？&nbsp;&nbsp;<a href="register.action">立即注册</a>
+								<font color="red">${message}</font>还不是商城用户？&nbsp;&nbsp;<a href="register.html">立即注册</a>
 							</div>
 							<div class="login_frist clearfix" id="user_div_name">
 								<label>登录名</label> 

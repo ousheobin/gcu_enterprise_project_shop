@@ -1,7 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@taglib  prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>
+ <%@taglib  prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
+ <c:set var="ctx" value="${pageContext.request.contextPath}"></c:set>
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -59,8 +61,7 @@
 	function reloadIndex(val) {
 		var keyword = $("#keyword").val();
 
-		window.location = "${pageContext.request.contextPath}/index.do?typecode="
-				+ val + "&keyword=" + keyword;
+		window.location = "${pageContext.request.contextPath}/item-" + val + "-list.html?keyword=" + keyword;
 	}
 </script>
 </head>
@@ -74,10 +75,9 @@
 		<div class="nav">
 			<div class="w960 center">
 				<ul>
-					<li><a title="首页" href="index.do">首页</a></li>
+					<li><a title="首页" href="index.html">首页</a></li>
 					<c:forEach items="${firstArticleTypes}" var="firstArticleType">
-						<li><a title="${firstArticleType.name}"
-							href="${ctx}/index.do?typecode=${firstArticleType.code}">${firstArticleType.name}</a>
+						<li><a title="${firstArticleType.name}" href="${ctx}/item-${firstArticleType.code}-list.html">${firstArticleType.name}</a>
 						</li>
 					</c:forEach>
 				</ul>
@@ -98,7 +98,7 @@
 				<c:forEach items="${firstArticleTypes}" var="firstArticleType">
 					<div class="item">
 						<h3>
-							<b>&gt;</b><a href="/index.do?typecode=${firstArticleType.code}">·${firstArticleType.name}</a>
+							<b>&gt;</b><a title="${firstArticleType.name}" href="${ctx}/item-${firstArticleType.code}-list.html">${firstArticleType.name}</a>
 						</h3>
 					</div>
 				</c:forEach>
@@ -107,10 +107,10 @@
 		<!-- 右边对应物品列表 -->
 		<div style="float:left;width:750px;text-align:center;">
 			<div>
-				<form action="index.do" method="post" name="search">
+				<form action="search.html" method="post" name="search">
 					物品类型： <select name="typecode" id="typecode"
 						onchange="reloadIndex(this.value)">
-						<option value="${firstArticleType.code}">${firstArticleType.name}</option>
+						<option value="${currentArticleType.code}">${currentArticleType.name}</option>
 						<c:forEach items="${allSecondArticleTypes}"
 							var="secondArticleType">
 							<option value="${secondArticleType.code}">----${secondArticleType.name}</option>
@@ -120,10 +120,9 @@
 					<button>搜索</button>
 				</form>
 			</div>
-			<!-- 显示所有书籍 -->
 			<div id="tabs" style="Width:750px;background-color:white;">
 				<ul>
-					<li><a href="tabs-1">${firstArticleType.name }</a></li>
+					<li><a href="tabs-1">${currentArticleType.name }</a></li>
 				</ul>
 				<div class="sales-queue" id="tabs-1"
 					style="background-color:white;margin-top:-25px;">
@@ -132,7 +131,7 @@
 							<li id="selbgc11">
 								<dl class="item-des">
 									<dt>
-										<a href="item.do?id=${article.id}" title="${article.title}"
+										<a href="item.html?id=${article.id}" title="${article.title}"
 											target="_self"> <img
 											src="images/article/${article.image}" width="132" height="96" />
 										</a>
@@ -145,7 +144,7 @@
 									</dd>
 									<dd>
 										<h2>
-											<a href="item.do?id=${article.id}" title="${article.title}"
+											<a href="item.html?id=${article.id}" title="${article.title}"
 												target="_self">${article.title}</a>
 										</h2>
 									</dd>

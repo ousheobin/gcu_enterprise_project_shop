@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@taglib  prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>
+ <%@taglib  prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
+ <c:set var="ctx" value="${pageContext.request.contextPath}"></c:set>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -56,9 +59,9 @@
 	﻿	<div class="nav">
 			<div class="w960 center">
 				<ul>
-					<li><a title="首页" href="index.do">首页</a></li>
+					<li><a title="首页" href="index.html">首页</a></li>
 					<c:forEach items="${firstArticleTypes}" var="firstArticleType" >
-						<li><a title="${firstArticleType.name}" href="${ctx}/index.do?typecode=${firstArticleType.code}">${firstArticleType.name}</a></li>
+						<li><a title="${firstArticleType.name}" href="${ctx}/index.html?typecode=${firstArticleType.code}">${firstArticleType.name}</a></li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -75,7 +78,7 @@
 			</div>
 			<div class="mc">
 				<c:forEach items="${firstArticleTypes}" var="firstArticleType" >
-						<div class="item"><h3><b>&gt;</b><a title="护肤" href="${ctx}/index.action?typecode=${firstArticleType.code}">${firstArticleType.name}</a></h3></div>
+						<div class="item"><h3><b>&gt;</b><a title="护肤" href="${ctx}/index.html?typecode=${firstArticleType.code}">${firstArticleType.name}</a></h3></div>
 					</c:forEach>
 			</div>
 		</div>
@@ -130,7 +133,7 @@
 				
 				
 				<!-- 加入购物车表单 -->
-				<form action="buy.action" method="post" id="buyform">
+				<form action="buy.html" method="post" id="buyform">
 					<!-- 隐藏表单传递要购买的书籍id -->
 					<input type="hidden" name="id" value="${article.id}"/>
 					<div class="m" id="choose">
