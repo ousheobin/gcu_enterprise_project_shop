@@ -42,18 +42,6 @@ public class MemberController {
 		return "register";
 	}
 	
-	@RequestMapping(value="member/shop-car.html")
-	public String getShopCar(HttpServletRequest request ) {
-		request.setAttribute("firstArticleTypes",articleService.getAllMainTypes() );
-		return "shopCar";
-	}
-	
-	@RequestMapping(value="member/orders.html")
-	public String getOrders(HttpServletRequest request ) {
-		request.setAttribute("firstArticleTypes",articleService.getAllMainTypes() );
-		return "orderList";
-	}
-	
 	@RequestMapping(value="regisiter_vericode")
 	@ResponseBody
 	public void getVericode(HttpServletRequest request,HttpServletResponse response) {

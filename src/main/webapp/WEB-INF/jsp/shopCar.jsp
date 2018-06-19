@@ -16,7 +16,7 @@
 		<script type="text/javascript">
 			// 从购物车中删除物品
 			var deleteFn = function(id){
-				window.location.href = "deleteCar.action?id=" + id;
+				window.location.href = "shop_car_remove?id=" + id;
 			};
 			/** id: 物品的ID, num: 购买的数量 , type : 是加一还是减一*/
 			var addFun = function(id, num, type,storage){
@@ -30,10 +30,10 @@
 				}
 				switch (type){
 					case 1: // 增加一个
-						window.location.href = "updateCar.action?id=" + id + "&buyNum=" + (buyNum+1);
+						window.location.href = "shop_car_update?id=" + id + "&buyNum=" + (buyNum+1);
 						break;
 					case 2: // 减少一个
-						window.location.href = "updateCar.action?id=" + id + "&buyNum=" + (buyNum-1);
+						window.location.href = "shop_car_update?id=" + id + "&buyNum=" + (buyNum-1);
 						break;
 				}
 			};
@@ -45,7 +45,7 @@
 				}else if ((obj.value < 1)  || (obj.value >storage)){
 					obj.value = num;
 				}else if (obj.value != num){
-					window.location.href = "updateCar.action?id=" + id + "&buyNum=" + Math.ceil(obj.value);
+					window.location.href = "shop_car_update?id=" + id + "&buyNum=" + Math.ceil(obj.value);
 				}
 			};
 			
@@ -159,12 +159,12 @@
 									<li class="row11">
 										<p>
 											<span class="name">
-												<a name="product"  href="item.do?id=${shopCar.article.id}" title="${shopCar.article.title}">${shopCar.article.title}</a>
+												<a name="product"  href="${ctx }/items/${shopCar.article.id}.html" title="${shopCar.article.title}">${shopCar.article.title}</a>
 											</span>
 										</p>
 									</li>
 									<li class="row22">0</li>
-									<li class="row33"><span>￥${shopCar.article.price}</span>&nbsp;&nbsp;(${shopCar.article.discount}折)</li>
+									<li class="row33"><span>￥${shopCar.article.price}</span>&nbsp;&nbsp;(${shopCar.article.discount * 10}折)</li>
 									<li class="row44"><span>￥<fmt:formatNumber value="${shopCar.article.price*shopCar.article.discount}"  pattern="0.00"></fmt:formatNumber></span></li>
 									<li class="row55">
 										<input type="text" name="number"  value="${shopCar.buyNum}" onblur="blurFn(this, ${shopCar.article.id}, ${shopCar.buyNum},${shopCar.article.storage});">
@@ -197,12 +197,12 @@
 		        <div align="right" id="div_total" style="display: block;clear:both;">
 		        	<p style="font-size:14px;font-weight:bold;line-height:31px;">
 		        		数量总计：
-		            	<span style="color:red;font-size:16px;font-weight:bold;">${num}</span>&nbsp;&nbsp;(件)
+		            	<span style="color:red;font-size:16px;font-weight:bold;">${sum}</span>&nbsp;&nbsp;(件)
 		        	</p>
 		            <p style="font-size:14px;font-weight:bold;line-height:31px;">
 		            	金额总计：
 		                <span>￥</span>
-		                <span style="color:red;font-size:16px;font-weight:bold;"><fmt:formatNumber pattern="0.00"  value="${totalMoney}"></fmt:formatNumber>  </span>&nbsp;&nbsp;(折后价)
+		                <span style="color:red;font-size:16px;font-weight:bold;"><fmt:formatNumber pattern="0.00"  value="${prize}"></fmt:formatNumber>  </span>&nbsp;&nbsp;(折后价)
 		            </p>
 		            <p>
 		            	

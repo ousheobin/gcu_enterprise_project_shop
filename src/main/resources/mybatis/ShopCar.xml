@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd//mybatis-3-mapper.dtd">
+<mapper namespace="ShopCarDao">
+
+	<insert id="addShopCarItem" parameterType="ShopCarEntity">
+		INSERT INTO tb_shop_car ( f_article_id, f_buy_num, f_user_id) 
+		VALUES ( #{articleId},  #{buyNum},  #{userId}); 
+	</insert>
+	
+	<update id="updateShopCar" parameterType="ShopCarEntity">
+		UPDATE tb_shop_car 
+		SET f_buy_num =#{buyNum}  
+		WHERE f_id = #{id};
+	</update>
+	
+	<delete id="deleteShopCar" parameterType="Map">
+		DELETE FROM tb_shop_car WHERE f_article_id = #{articleId} AND f_user_id = #{userId};
+	</delete>
+	
+	<select id="getShopCarItemByUser" parameterType="UserEntity" resultMap="ShopCarEntityMap">
+		SELECT f_id,f_article_id, f_buy_num, f_user_id
+		FROM tb_shop_car
+		WHERE f_user_id = #{id};
+	</select>
+	
+	<select id="getSingleShopCarItem" parameterType="Map" resultMap="ShopCarEntityMap">
+		SELECT f_id,f_article_id, f_buy_num, f_user_id
+		FROM tb_shop_car
+		WHERE f_article_id = #{articleId} AND f_user_id = #{userId};
+	</select>
+	
+	<resultMap type="ShopCarEntity" id="ShopCarEntityMap">
+		<id column="f_id" property="id"/>
+		<result column="f_article_id" property="articleId"/>
+		<result column="f_buy_num" property="buyNum"/>
+		<result column="f_user_id" property="userId"/>
+		<association property="article" column="f_article_id" select="ArticleDao.getArticleById"></association>
+	</resultMap>
+
+</mapper>
