@@ -30,4 +30,9 @@ public class ArticleDaoImpl implements ArticleDao{
 		return sqlSessionTemplate.selectList("ArticleDao.getArticleByKeywordAndCate",parameters);
 	}
 
+	@Override
+	public ArticleEntity getArticleById(int id) {
+		return sqlSessionTemplate.selectOne("ArticleDao.getArticleById",id);
+	}
+
 }

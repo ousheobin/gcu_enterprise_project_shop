@@ -15,4 +15,6 @@ public interface ArticleService {
 
 	public List<ArticleEntity> getArticles(String categoryId, String keyword);
 	
+	public ArticleEntity getArticleById(int id);
+	
 }

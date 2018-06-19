@@ -10,6 +10,13 @@
 		 WHERE f_disabled = 0 AND f_type_code LIKE #{typeCode} 
 		 <if test="keyWord != null">AND ( f_title LIKE #{keyWord}  OR f_title LIKE #{keyWord} )</if>;
 	</select>
+	
+	<select id="getArticleById" parameterType="Integer" resultMap="ArticleEntityMap">
+		SELECT f_id, f_title , f_supplier , f_price , f_discount , f_locality , f_putaway_date ,
+		 f_storage , f_image , f_type_code , f_create_date , f_disabled , f_description
+		 FROM tb_article 
+		 WHERE f_disabled = 0 AND f_id = #{id};
+	</select>
 
 	<resultMap type="ArticleEntity" id="ArticleEntityMap">
 		<id column="f_id" property="id" />

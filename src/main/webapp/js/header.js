@@ -13,19 +13,19 @@ function header(name){
 	if (name == null || name == "" || name.length == 0){
 		str += "	<li>";
 		str += "		<span>";
-		str += "			[<a href=\"login.do\">登录</a>]";
-		str += "			[<a href=\"register.do\">免费注册</a>]";
+		str += "			[<a href=\"/shop/login.html\">登录</a>]";
+		str += "			[<a href=\"/shop/register.html\">免费注册</a>]";
 		str += "		</span>";
 		str += "	</li>";
 	}else{
 		str += "	<li>";
 		str += "		<span style='color:red;'>" + name;
 		str += "		</span>：您好!&nbsp;&nbsp;";
-		str += "		[<a href=\"loginout.action\">退出</a>]";
+		str += "		[<a href=\"/shop/logout\">退出</a>]";
 		str += "	</li>";
 	}
-	str += "    <li>&nbsp;[<a href=\"ShowShopCarItem.action\">我的购物车</a>]</li>";
-	str += "	<li>&nbsp;[<a href=\"showOrder.action\">我的订单</a>]</li>";
+	str += "    <li>&nbsp;[<a href=\"/shop/member/shop-car.html\">我的购物车</a>]</li>";
+	str += "	<li>&nbsp;[<a href=\"/shop/member/orders.html\">我的订单</a>]</li>";
 	str += "	<li>";
 	str += "		<span>";
 	str += "			&nbsp;&nbsp;&nbsp;<a href=\"javascript:void(0);\" onclick=\"this.style.behavior='url(#default#homepage)';this.setHomePage('http://gz.gec-edu.org/?gzbdgzbdyueqianpc23');\">设为首页</a> |";
@@ -40,15 +40,15 @@ function header(name){
 	str += "<div class=\"top w960 center\">";
 	str += "	<div class=\"toptitle\">";
 	str += "	<h1>";
-	str += "		<a style=\"logo_style\" title=\"广州Java培训-购物商城\" href=\"index.action\"></a>";
-	str += "		<a href=\"index.action\" title=\"广州粤嵌教育-购物商城\"><img alt=\"广州粤嵌教育-购物商城\" src=\"images/logo.gif\"></a>";
+	str += "		<a style=\"logo_style\" title=\"广州Java培训-购物商城\" href=\"/shop/index.html\"></a>";
+	str += "		<a href=\"/shop/index.html\" title=\"广州粤嵌教育-购物商城\"><img alt=\"广州粤嵌教育-购物商城\" src=\"/shop/images/logo.gif\"></a>";
 	str += "	</h1>";
 	str += "</div>";
 	str += "<div class=\"banner\">";
 	str += "	<a title=\"广州粤嵌教育-购物商城\" href=\"javascript:void(0);\"></a>";
 	str += "	<a title=\"广州粤嵌教育-购物商城\" href=\"index.action\">";
 	str += "	<em>";
-	str += "	<img height=\"80\" width=\"552\" alt=\"广州粤嵌教育-购物商城\" border=\"0\" src=\"images/banner.gif\">";
+	str += "	<img height=\"80\" width=\"552\" alt=\"广州粤嵌教育-购物商城\" border=\"0\" src=\"/shop/images/banner.gif\">";
 	str += "	</em></a>";
 	str += "</div>";
 	str += "<div class=\"rlink\">";

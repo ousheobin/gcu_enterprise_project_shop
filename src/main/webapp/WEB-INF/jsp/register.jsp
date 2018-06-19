@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@taglib  prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>
+ <%@taglib  prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
+  <c:set var="ctx" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -190,11 +192,9 @@ pageEncoding="UTF-8"%>
 		<div class="nav">
 			<div class="w960 center">
 				<ul>
-					<li><a title="首页" href="index.do">首页</a></li>
-					<c:forEach items="${firstArticleTypes}" var="firstArticleType">
-						<li><a title="${firstArticleType.name}"
-							href="${ctx}/index.do?typecode=${firstArticleType.code}">${firstArticleType.name}</a>
-						</li>
+					<li><a title="首页" href="index.html">首页</a></li>
+					<c:forEach items="${firstArticleTypes}" var="firstArticleType" >
+						<li><a title="${firstArticleType.name}" href="${ctx}/item-${firstArticleType.code}-list.html">${firstArticleType.name}</a>
 					</c:forEach>
 				</ul>
 			</div>
@@ -207,7 +207,7 @@ pageEncoding="UTF-8"%>
 				<strong>注册新用户</strong>
 			</h2>
 			<span style="text-align: right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			<span>我已经注册，现在就&nbsp;<a href="login.action">登录</a> </span>
+			<span>我已经注册，现在就&nbsp;<a href="login.html">登录</a> </span>
 		</div>
 		<div class="mc">
 			<ul class="tab">

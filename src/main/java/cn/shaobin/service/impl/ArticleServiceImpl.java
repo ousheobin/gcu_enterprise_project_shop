@@ -41,4 +41,9 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleDao.getArticles(categoryId, keyword);
 	}
 
+	@Override
+	public ArticleEntity getArticleById(int id) {
+		return articleDao.getArticleById(id);
+	}
+
 }

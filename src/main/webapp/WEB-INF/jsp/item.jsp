@@ -11,9 +11,9 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link href="fkjava.ico" rel="shortcut icon" type="image/x-icon" />
 		<!-- main.css是购物商城主样式 -->
-		<link rel=stylesheet type=text/css href="css/main.css"/>
+		<link rel=stylesheet type=text/css href="${ctx }/css/main.css"/>
 		<!-- header.js输出头部信息 -->
-		<script type="text/javascript" src="js/header.js"></script>
+		<script type="text/javascript" src="${ctx }/js/header.js"></script>
 		<script type="text/javascript">
 		//购买数量，失去焦点
 		function  blurFn(){
@@ -59,9 +59,9 @@
 	﻿	<div class="nav">
 			<div class="w960 center">
 				<ul>
-					<li><a title="首页" href="index.html">首页</a></li>
+					<li><a title="首页" href="${ctx}/index.html">首页</a></li>
 					<c:forEach items="${firstArticleTypes}" var="firstArticleType" >
-						<li><a title="${firstArticleType.name}" href="${ctx}/index.html?typecode=${firstArticleType.code}">${firstArticleType.name}</a></li>
+						<li><a title="${firstArticleType.name}" href="${ctx}/item-${firstArticleType.code}-list.html">${firstArticleType.name}</a>
 					</c:forEach>
 				</ul>
 			</div>
@@ -89,15 +89,15 @@
 				<div id="name">
 					<h1>${article.title}<font style="color: #ff0000"id="advertiseWord"></font></h1>
 				</div>
-				<div id="preview">
+				<div id="preview" style=" margin-left: 15px;">
 					<div id="spec-n1" class="jqzoom">
-						<img src="images/article/${article.image}" title="${article.title}" height="280" width="280" />
+						<img src="${ctx }/images/article/${article.image}" title="${article.title}" height="280" width="280" />
 					</div>
 					<ul class="extra">
 						<li>
 							<span>评分：</span>
 							<div class="con" id="star10918727">
-								<div style="float: left; margin: 2px 0 0 5px; width: 64px; height: 12px; background-image: url(images/icon_clubs.gif); background-repeat: no-repeat; overflow: hidden;"></div>
+								<div style="float: left; margin: 2px 0 0 5px; width: 64px; height: 12px; background-image: url(${ctx }/images/icon_clubs.gif); background-repeat: no-repeat; overflow: hidden;"></div>
 								<a href="javascript:void(0);" class="num-comment">(已有151人评价)</a>
 							</div>
 						</li>
@@ -113,7 +113,8 @@
 					<li>定&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：<del>￥${article.price}</del></li>
 					
 					<li><font color="red">疯&nbsp;&nbsp;狂&nbsp;&nbsp;价：</font><span id="priceinfo"
-						class="price">￥<fmt:formatNumber  pattern="0.00"  value="${article.price*article.discount}"></fmt:formatNumber>  </span><span class="rate" id="pricediscount">（${article.discount}折）</span></li>
+						class="price">￥<fmt:formatNumber  pattern="0.00"  value="${article.price*article.discount}"></fmt:formatNumber>  </span>
+						<span class="rate" id="pricediscount">（${article.discount * 10}折）</span></li>
 					<li class="sub">
 						<span class="fl">库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存：${article.storage}</span>
 						<span>&nbsp;&nbsp;下单后立即发货</span>
@@ -133,7 +134,7 @@
 				
 				
 				<!-- 加入购物车表单 -->
-				<form action="buy.html" method="post" id="buyform">
+				<form action="../buy" method="post" id="buyform">
 					<!-- 隐藏表单传递要购买的书籍id -->
 					<input type="hidden" name="id" value="${article.id}"/>
 					<div class="m" id="choose">
@@ -149,9 +150,9 @@
 						</dl>
 						<div class="btns">
 							<a id="InitCartUrl" href="javascript:void(0);" onclick="buy();" class="btn-append"
-								style="background-image: url(images/btn_new.jpg)">添加到购物车</a> 
+								style="background-image: url(${ctx }/images/btn_new.jpg)">添加到购物车</a> 
 							<input	value="关&nbsp;注"
-								style="width: 68px; height: 30px; padding: 4px 0 4px 18px; margin-top: 7px; background: url(images/btn_attention.jpg) no-repeat 0 0; border: 0; line-height: 0; color: transparent; font-size: 0; *padding-bottom: 0px;"
+								style="width: 68px; height: 30px; padding: 4px 0 4px 18px; margin-top: 7px; background: url(${ctx }/images/btn_attention.jpg) no-repeat 0 0; border: 0; line-height: 0; color: transparent; font-size: 0; *padding-bottom: 0px;"
 								id="coll10918727" 
 								type="button" />
 							<div class="clr"></div>
@@ -165,7 +166,7 @@
 	
 	<!--bottom part-->
 	<div style="width: 1060px;margin: 0px auto;">
-  		<img src="images/step.jpg"/>
+  		<img src="${ctx }/images/step.jpg"/>
   	</div>
 </body> 
 </html>
