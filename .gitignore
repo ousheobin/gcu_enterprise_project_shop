@@ -30,3 +30,6 @@ local.properties
 # Database Config File
 config.properties
 /target/
+
+# static files
+src/main/webapp/images/article/
