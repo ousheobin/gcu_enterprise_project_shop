@@ -1,3 +1,7 @@
 ## Shop - Project of the Enterprise Training ##
 
-~ Too lazy, and there is nothing ~
+** 项目说明 **
+
+- 数据库默认 MySQL 数据表在 sql 目录下
+- 修改src/main/resources/config.properties里面的数据库配置
+- Tomcat运行，访问 http://localhost:8080/shop ok啦！
