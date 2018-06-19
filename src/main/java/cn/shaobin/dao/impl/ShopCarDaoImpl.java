@@ -47,4 +47,9 @@ public class ShopCarDaoImpl implements ShopCarDao {
 		return sqlSessionTemplate.selectOne("ShopCarDao.getSingleShopCarItem",param);
 	}
 
+	@Override
+	public ShopCarEntity getShopCarById(int shopCarId) {
+		return  sqlSessionTemplate.selectOne("ShopCarDao.getShopCarItemById",shopCarId);
+	}
+
 }

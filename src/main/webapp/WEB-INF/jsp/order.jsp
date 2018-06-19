@@ -146,10 +146,10 @@
 										<c:forEach items="${shopCars}"  var="shopCar">
 											<tr class="align_Center">
 												<td width="25%">${shopCar.article.title} </td>
-												<td width="10%"><span class="price">￥<fmt:formatNumber value="${shopCar.article.price}" pattern="0.00"></fmt:formatNumber>&nbsp;&nbsp;(${shopCar.article.discount}折)</span></td>
+												<td width="10%"><span class="price">￥<fmt:formatNumber value="${shopCar.article.price}" pattern="0.00"></fmt:formatNumber>&nbsp;&nbsp;(${shopCar.article.discount*10}折)</span></td>
 												<td width="5%">￥0.00</td>
 												<td width="5%">￥<fmt:formatNumber value="${shopCar.article.price*shopCar.article.discount*shopCar.buyNum}" pattern="0.00"></fmt:formatNumber> </td>
-												<td width="8%">100</td>
+												<td width="8%">${shopCar.article.storage}</td>
 												<td width="5%">${shopCar.buyNum}</td>
 											</tr>
 										</c:forEach>
@@ -204,9 +204,9 @@
 									</td>
 									<td style="width: 100px; padding: 0pt;">
 										<!-- 确定订单 -->
-										<form action="saveOrder.action" method="post" id="orderform">
+										<form action="confirm_order" method="post" id="orderform">
 											<input type="hidden" id="orderInfo"  name="orderInfo"  value="${orderInfo}">
-											<input type="hidden" name="countMoney" value="171.76"/> 
+											<input type="hidden" name="total" value="${totalMoney}"/> 
 											<input onclick="submitFn();" style="margin-top: 2px; border: medium none; cursor: pointer; width: 160px; height: 53px; background: url(images/submit.jpg) repeat scroll 0% 0% transparent;" type="button"/>
 										</form>
 									</td>

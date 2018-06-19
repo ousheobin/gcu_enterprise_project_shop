@@ -55,10 +55,12 @@ CREATE TABLE tb_order(
 
 DROP TABLE IF EXISTS tb_order_item;
 CREATE TABLE tb_order_item(
-	f_order_id INT PRIMARY KEY AUTO_INCREMENT ,
+	f_id INT PRIMARY KEY AUTO_INCREMENT,
+	f_order_id INT,
 	f_article_id INT,
 	f_order_num INT,
-	CONSTRAINT fk_order_item_article FOREIGN KEY(f_article_id) REFERENCES tb_article(f_id)
+	CONSTRAINT fk_order_item_article FOREIGN KEY(f_article_id) REFERENCES tb_article(f_id),
+	CONSTRAINT fk_order_item_order FOREIGN KEY(f_order_id) REFERENCES tb_order(f_id)
 );
 
 DROP TABLE IF EXISTS tb_shop_car;

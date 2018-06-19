@@ -24,6 +24,12 @@
 		WHERE f_user_id = #{id};
 	</select>
 	
+	<select id="getShopCarItemById" parameterType="Integer" resultMap="ShopCarEntityMap">
+		SELECT f_id,f_article_id, f_buy_num, f_user_id
+		FROM tb_shop_car
+		WHERE f_id = #{id};
+	</select>
+	
 	<select id="getSingleShopCarItem" parameterType="Map" resultMap="ShopCarEntityMap">
 		SELECT f_id,f_article_id, f_buy_num, f_user_id
 		FROM tb_shop_car

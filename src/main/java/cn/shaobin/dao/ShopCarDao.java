@@ -14,6 +14,8 @@ public interface ShopCarDao {
 	public void deleteShopCar(ShopCarEntity shopCar);
 	
 	public ShopCarEntity getShopCarByUser(int articleId,int userId);
+
+	public ShopCarEntity getShopCarById(int shopCarId );
 	
 	public List<ShopCarEntity> getShopCar(UserEntity user);
 

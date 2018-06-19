@@ -206,7 +206,7 @@
 		            </p>
 		            <p>
 		            	
-		                <form action="${ctx}/order.action?step=1" method="post" id="form">
+		                <form action="${ctx}/comfirm-order.html" method="post" id="form">
 				            <td><a href="${ctx}/index.html" name="goon" class="goon"><img alt="" src="${ctx }/images/shop.jpg"/></a></td>
 				            <!-- 通过隐藏输入框 将订单相关信息传递至后台 -->
 				            <input type="hidden" name="orderInfo" id="orderInfo"/>

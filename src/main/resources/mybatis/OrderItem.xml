@@ -3,5 +3,23 @@
 "http://mybatis.org/dtd//mybatis-3-mapper.dtd">
 <mapper namespace="OrderItemDao">
 
+	<insert id="addOrderItem" parameterType="OrderItemEntity">
+		INSERT INTO tb_order_item (f_order_id,f_article_id,f_order_num)
+		VALUES(#{orderId},#{articleId},#{orderNum});
+	</insert>
+	
+	<select id="getOrderItemByOrder" parameterType="Integer" resultMap="OrderItemEntityMap">
+		SELECT f_id,f_order_id,f_article_id,f_order_num
+		FROM tb_order_item
+		WHERE f_order_id = #{orderId};
+	</select>
+
+	<resultMap type="OrderItemEntity" id="OrderItemEntityMap">
+		<id column="f_id" property="id"/>
+		<result column="f_order_id" property="orderId"/>
+		<result column="f_article_id" property="articleId"/>
+		<result column="f_order_num" property="orderNum"/>
+		<association property="article" column="f_article_id" select="ArticleDao.getArticleById"></association>
+	</resultMap>
 
 </mapper>

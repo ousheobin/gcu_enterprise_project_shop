@@ -2,6 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd//mybatis-3-mapper.dtd">
 <mapper namespace="OrderDao">
-
+	
+	<insert id="addOrder" parameterType="OrderEntity">
+		INSERT INTO tb_order(f_order_code,f_create_date,f_send_date,f_status,f_amount,f_user_id) 
+		VALUES (#{orderCode},#{createDate},#{sendDate},#{status},#{amount},#{userId})
+		<selectKey keyProperty="id" resultType="Integer" order="AFTER">  
+            SELECT LAST_INSERT_ID();  
+        </selectKey>
+	</insert>
+	
+	<select id="getOrderByUser" parameterType="Integer" resultMap="OrderEntityMap">
+		SELECT f_order_code,f_create_date,f_send_date,f_status,f_amount,f_user_id 
+		FROM tb_order 
+		WHERE f_user_id = #{userId};
+	</select>
+	
+	<resultMap type="OrderEntity" id="OrderEntityMap">
+		<id column="f_id" property="id"/>
+		<result column="f_order_code" property="orderCode"/>
+		<result column="f_create_date" property="createDate"/>
+		<result column="f_send_date" property="sendDate"/>
+		<result column="f_status" property="status"/>
+		<result column="f_amount" property="amount"/>
+		<result column="f_user_id" property="userId"/>
+		<collection property="items" column="f_id" ofType="OrderItemEntity" javaType="ArrayList" select="OrderItemDao.getOrderItemByOrder"/> 
+	</resultMap>
 
 </mapper>
