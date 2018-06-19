@@ -6,16 +6,20 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import cn.shaobin.dao.ArticleDao;
 import cn.shaobin.dao.ArticleTypeDao;
 import cn.shaobin.entity.ArticleEntity;
 import cn.shaobin.entity.ArticleTypeEntity;
-import cn.shaobin.service.ArticleTypeService;
+import cn.shaobin.service.ArticleService;
 
 @Service
-public class ArticleTypeServiceImpl implements ArticleTypeService {
+public class ArticleServiceImpl implements ArticleService {
 	
 	@Resource
 	ArticleTypeDao articleTypeDao;
+	
+	@Resource
+	ArticleDao articleDao;
 
 	@Override
 	public List<ArticleTypeEntity> getAllMainTypes() {
@@ -30,6 +34,11 @@ public class ArticleTypeServiceImpl implements ArticleTypeService {
 	@Override
 	public ArticleTypeEntity getTypeByCode(String code) {
 		return articleTypeDao.getTypeByCode(code);
+	}
+
+	@Override
+	public List<ArticleEntity> getArticles(String categoryId, String keyword) {
+		return articleDao.getArticles(categoryId, keyword);
 	}
 
 }

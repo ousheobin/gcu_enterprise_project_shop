@@ -5,7 +5,7 @@ import java.util.List;
 import cn.shaobin.entity.ArticleEntity;
 import cn.shaobin.entity.ArticleTypeEntity;
 
-public interface ArticleTypeService {
+public interface ArticleService {
 	
 	public List<ArticleTypeEntity> getAllMainTypes();
 	
@@ -13,4 +13,6 @@ public interface ArticleTypeService {
 	
 	public ArticleTypeEntity getTypeByCode(String code);
 
+	public List<ArticleEntity> getArticles(String categoryId, String keyword);
+	
 }

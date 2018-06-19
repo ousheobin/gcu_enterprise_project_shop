@@ -8,6 +8,7 @@ CREATE TABLE tb_article_type(
 DROP TABLE IF EXISTS tb_article;
 CREATE TABLE tb_article(
 	f_id INT PRIMARY KEY AUTO_INCREMENT ,
+	f_title VARCHAR(255) ,
 	f_supplier VARCHAR(255) ,
 	f_price DOUBLE ,
 	f_discount DOUBLE ,
@@ -18,6 +19,7 @@ CREATE TABLE tb_article(
 	f_type_code VARCHAR(255) ,
 	f_create_date DATETIME ,
 	f_disabled VARCHAR(255),
+	f_description LONGTEXT,
 	CONSTRAINT fk_aticle_type FOREIGN KEY (f_type_code) REFERENCES tb_article_type(f_code)
 );
 

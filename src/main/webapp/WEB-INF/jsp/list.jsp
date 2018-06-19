@@ -64,6 +64,13 @@
 		window.location = "${pageContext.request.contextPath}/item-" + val + "-list.html?keyword=" + keyword;
 	}
 </script>
+<style type="text/css">
+.ui-widget-content {
+    border: 1px solid #dddddd;
+    background: #ffffff;
+    color: #333333;
+}
+</style>
 </head>
 <body>
 	<!-- header部分 -->
@@ -121,40 +128,37 @@
 				</form>
 			</div>
 			<div id="tabs" style="Width:750px;background-color:white;">
-				<ul>
-					<li><a href="tabs-1">${currentArticleType.name }</a></li>
-				</ul>
-				<div class="sales-queue" id="tabs-1"
-					style="background-color:white;margin-top:-25px;">
-					<ul class="goods-queue3">
+			<ul>
+    			<li style="border-bottom:0px; margin-bottom: 0px;"><a href="#tabs-1">${currentArticleType.name }</a></li>
+   		     </ul>
+   		     <div id="tabs-1" class="sales-queue" >
+   		     	<ul class="goods-queue3">
 						<c:forEach items="${articles}" var="article">
 							<li id="selbgc11">
 								<dl class="item-des">
 									<dt>
-										<a href="item.html?id=${article.id}" title="${article.title}"
-											target="_self"> <img
-											src="images/article/${article.image}" width="132" height="96" />
+										<a href="items/${article.id}.html" title="${article.title}" target="_self">
+											 <img src="images/article/${article.image}" width="132" height="96" />
 										</a>
 									</dt>
 									<dd>
-										<s>¥:<fmt:formatNumber value="${article.price}"
-												pattern="0.00"></fmt:formatNumber> </s> <strong>¥:<fmt:formatNumber
-												value="${article.price* article.discount}" pattern="0.00"></fmt:formatNumber>
-										</strong>
+										 <strong>¥:<fmt:formatNumber value="${article.price* article.discount}" pattern="0.00"></fmt:formatNumber></strong>
+										 <c:if test="${ article.discount > 0 &&  article.discount < 1 }">
+										 	 <s style="font-size:10px; margin-left:10px; text-decoration: line-through;">¥:<fmt:formatNumber value="${article.price}" pattern="0.00"></fmt:formatNumber> </s>
+										 </c:if>
+										
 									</dd>
 									<dd>
 										<h2>
-											<a href="item.html?id=${article.id}" title="${article.title}"
-												target="_self">${article.title}</a>
+											<a href="items/${article.id}.html" title="${article.title}" target="_self">${article.title}</a>
 										</h2>
 									</dd>
 								</dl>
 							</li>
 						</c:forEach>
-					</ul>
-					<!-- 分页标签 -->
-					<div class="pagebottom" id="pager" style="clear:both;"></div>
-				</div>
+				  </ul>
+   		     </div>
+			 <div class="pagebottom" id="pager" style="clear:both;"></div>
 			</div>
 		</div>
 	</div>
