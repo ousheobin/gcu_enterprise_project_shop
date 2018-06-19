@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
+<%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib  prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib  prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
+  <c:set var="ctx" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -8,9 +10,9 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link href="fkjava.ico" rel="shortcut icon" type="image/x-icon"/>
 		<!-- main.css是购物商城主样式 -->
-		<link rel=stylesheet type=text/css href="css/main.css"/>
+		<link rel=stylesheet type=text/css href="${ctx }/css/main.css"/>
 		<!-- header.js输出头部信息 -->
-		<script type="text/javascript" src="js/header.js"></script>
+		<script type="text/javascript" src="${ctx }/js/header.js"></script>
 		
 		<script type="text/javascript">
 			var viewitem = function(obj, id){
@@ -102,7 +104,7 @@
 											<tr style="display:none;" id="book_${stat.index}_${st.index}" >
 												<td  align="center">
 													<a href="item.action?id=${orderItem.article.id}" title="${orderItem.article.title}">
-	                  								<img width="60px" height="60px" alt="${orderItem.article.title}" src="images/article/${orderItem.article.image}" style="display: inline;"></a>
+	                  								<img width="60px" height="60px" alt="${orderItem.article.title}" src="${ctx }/images/article/${orderItem.article.image}" style="display: inline;"></a>
 	                  							</td>
 												<td  align="center">
 													<a href="item.action?id=${orderItem.article.id}" title="${orderItem.article.title}">${orderItem.article.title}</a>
@@ -125,7 +127,7 @@
 	<!---- middle end----->
 	<!--bottom part-->
 	<div style="width: 1060px;margin: 0px auto;">
-  		<img src="images/step.jpg"/>
+  		<img src="${ctx }/images/step.jpg"/>
   	</div>
 </body> 
 </html>

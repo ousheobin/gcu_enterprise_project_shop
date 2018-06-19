@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd//mybatis-3-mapper.dtd">
+<mapper namespace="UserDao">
+
+		<insert id="addUser" parameterType="UserEntity">
+			INSERT INTO tb_user ( f_loginName, f_password, f_name, f_sex, f_email, f_phone,
+			 f_address, f_role, f_create_date, f_disabled, f_active) 
+			VALUES (#{loginName}, #{password}, #{name}, #{sex}, #{email}, 
+			#{phone}, #{address}, #{role}, #{createDate}, #{disabled}, #{active});
+		</insert>
+		
+		<select id="getUserByName" parameterType="String" resultMap="UserEntityMap">
+			SELECT f_id,f_loginName, f_password, f_name, f_sex, f_email, f_phone,
+			 f_address, f_role, f_create_date, f_disabled, f_active
+			 FROM tb_user
+			 WHERE f_loginName = #{name};
+		</select>
+		
+		<resultMap type="UserEntity" id="UserEntityMap">
+			<id column="f_id" property="id"/>
+			<result  column="f_loginName" property="loginName"/>
+			<result  column="f_password" property="password"/>
+			<result  column="f_name" property="name"/>
+			<result  column="f_sex" property="sex"/>
+			<result  column="f_email" property="email"/>
+			<result  column="f_phone" property="phone"/>
+			<result  column="f_address" property="address"/>
+			<result  column="f_role" property="role"/>
+			<result  column="f_create_date" property="createDate"/>
+			<result  column="f_disabled" property="disabled"/>
+			<result  column="f_active" property="active"/>
+		</resultMap>
+
+	
+</mapper>

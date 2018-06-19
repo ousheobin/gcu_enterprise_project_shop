@@ -23,12 +23,13 @@ public class OrderController {
 	@RequestMapping(value="buy")
 	@ResponseBody
 	public void handleBuyEvent( String id, String buyNum ,HttpServletRequest request , HttpServletResponse response) throws IOException {
-		UserEntity user = (UserEntity) request.getSession().getAttribute("userEntity");
+		UserEntity user = (UserEntity) request.getSession().getAttribute("session_user");
 		if(user!=null) {
 			try {
 				int articleId = Integer.valueOf(id);
 				int amount = Integer.valueOf(buyNum);
 				ArticleEntity article = articleService.getArticleById(articleId);
+				response.sendRedirect(request.getContextPath()+"/member/shop-car.html");
 			}catch(Exception ex) {
 				
 			}

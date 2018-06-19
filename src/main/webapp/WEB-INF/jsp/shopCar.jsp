@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib  prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib  prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
+  <c:set var="ctx" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -9,9 +10,9 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link href="fkjava.ico" rel="shortcut icon" type="image/x-icon" />
 		<!-- main.css是购物商城主样式 -->
-		<link rel=stylesheet type=text/css href="css/main.css"/>
+		<link rel=stylesheet type=text/css href="${ctx }/css/main.css"/>
 		<!-- header.js输出头部信息 -->
-		<script type="text/javascript" src="js/header.js"></script>
+		<script type="text/javascript" src="${ctx }/js/header.js"></script>
 		<script type="text/javascript">
 			// 从购物车中删除物品
 			var deleteFn = function(id){
@@ -152,7 +153,7 @@
 									</li>
 									<li class="row00">
 										<a name="productpic" href="item.action?id=${shopCar.article.id}" title="${shopCar.article.title}">
-											<img src="images/article/${shopCar.article.image}" width="60xp" height="60xp">
+											<img src="${ctx }/images/article/${shopCar.article.image}" width="60xp" height="60xp">
 										</a>
 									</li>
 									<li class="row11">
@@ -182,10 +183,10 @@
 	        		<c:otherwise>
 	        			<table align="center">
 			        		<tr>
-			        			<td><img alt="" src="images/cart_icon.gif"/></td>
+			        			<td><img alt="" src="${ctx }/images/cart_icon.gif"/></td>
 			        			<td>
 			        				<span style="font-size:14px;font-weight:bold;">
-			        					购物车为空，<a href="index.do">我要去看看&gt;&gt;</a>
+			        					购物车为空，<a href="${ctx }">我要去看看&gt;&gt;</a>
 			        				</span>
 			        			</td>
 			        		</tr>
@@ -206,11 +207,11 @@
 		            <p>
 		            	
 		                <form action="${ctx}/order.action?step=1" method="post" id="form">
-				            <td><a href="${ctx}/index.do" name="goon" class="goon"><img alt="" src="images/shop.jpg"/></a></td>
+				            <td><a href="${ctx}/index.html" name="goon" class="goon"><img alt="" src="${ctx }/images/shop.jpg"/></a></td>
 				            <!-- 通过隐藏输入框 将订单相关信息传递至后台 -->
 				            <input type="hidden" name="orderInfo" id="orderInfo"/>
 				            <td>
-								<button id="commitOrder" style="background-image: url(images/balance.jpg);width: 140px;height: 35px" 
+								<button id="commitOrder" style="background-image: url(${ctx }/images/balance.jpg);width: 140px;height: 35px" 
 								type="button" onclick="submitOrder()"></button>
 							</td>
 				        </form>
@@ -224,7 +225,7 @@
 	
 	<!--bottom part-->
 	<div style="width: 1060px;margin: 0px auto;">
-  		<img src="images/step.jpg"/>
+  		<img src="${ctx }/images/step.jpg"/>
   	</div>
 </body> 
 </html>

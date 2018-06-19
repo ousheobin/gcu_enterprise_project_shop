@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- <%@taglib  prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>
- <%@taglib  prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib  prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib  prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
   <c:set var="ctx" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -66,9 +66,8 @@
 	</div>
 	<!--header end-->
 	
-	<form name="loginform" method="post" action="login.html" id="loginform">
+	<form name="loginform" method="post" action="do_login" id="loginform">
 		<br />
-		<input type="hidden" name="method" value="submitTable"/>
 		<div class="login_main" style="background: url(images/login_bg.jpg) no-repeat center 0;">
 			<div class="login_panel">
 				<!--登录框开始-->
@@ -81,7 +80,7 @@
 							<div class="login_frist clearfix" id="user_div_name">
 								<label>登录名</label> 
 								<span class="login_input"> 
-									<input name="loginName" type="text" maxlength="40" id="loginName" class="tip"/>
+									<input name="username" type="text" maxlength="40" id="loginName" class="tip"/>
 								</span> 
 								<span class="hint" id="login_loginname_error" style="display: none"></span> 
 								<span class="hint" id="usernameMessage" style="display: black">请输入邮箱地址</span>

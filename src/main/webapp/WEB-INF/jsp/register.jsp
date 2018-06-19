@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- <%@taglib  prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>
- <%@taglib  prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib  prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib  prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
   <c:set var="ctx" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,21 +15,21 @@
 <meta name="Author" content="fkjava.org" />
 <meta name="Copyright" content="All Rights Reserved." />
 <!-- main.css是购物商城主样式 -->
-<link rel=stylesheet type=text/css href="css/main.css" />
+<link rel=stylesheet type=text/css href="${ctx}/css/main.css" />
 <!-- header.js输出头部信息 -->
-<script type="text/javascript" src="js/header.js"></script>
+<script type="text/javascript" src="${ctx}/js/header.js"></script>
 <!-- regex.js是正则表达式的一系列判断 -->
-<script type=text/javascript src=js/regex.js></script>
+<script type=text/javascript src="${ctx}/js/regex.js"></script>
 
-<link rel="stylesheet" type="text/css" href="css/sweetalert2.min.css">
-<script src="js/sweetalert2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${ctx}/css/sweetalert2.min.css">
+<script src="${ctx}/js/sweetalert2.min.js"></script>
 <!-- for IE support -->
-<script src="js/es6-promise.min.js"></script>
+<script src="${ctx}/js/es6-promise.min.js"></script>
 
 <script type="text/javascript">
 	var changFn = function() {
 		var img = document.getElementById('JD_Verification1');
-		img.src = "${ctx}/verify.do?date=" + new Date();
+		img.src = "${ctx}/regisiter_vericode?r=" + Math.random();
 	};
 
 	var $ = function(id) {
@@ -85,7 +85,7 @@
 				$('loginName_error').innerHTML = "您输入的邮箱地址不合法";
 			}
 
-			if (flag) {
+/* 			if (flag) {
 				//异步检验用户名是否存在
 				jQuery.ajax({
 					type : "post",
@@ -100,7 +100,7 @@
 					}
 				});
 
-			}
+			} */
 
 		} else if (id == "passWord") {
 			if (fieldValue == null || fieldValue == ""
@@ -214,8 +214,7 @@
 				<li class="curr">个人用户信息</li>
 			</ul>
 			<!-- form -->
-			<form id="registerform" method="post" name="registerform"
-				action="register.do">
+			<form id="registerform" method="post"  action="do_regisiter">
 				<input type="hidden" name="method" value="add" />
 
 				<div class="form">
@@ -225,7 +224,7 @@
 						<span class="label"><b class="ftx04">*</b>登录名：</span>
 						<div class="fl">
 							<input type="text" id="loginName" name="loginName" class="text"
-								onfocus="formOnfocus(this.id);" onblur="formOnblur(this.id);">
+								onfocus="formOnfocus(this.id);" onblur="formOnblur(this.id);" value="${loginName}">
 							<span id="loginName_ok"></span>
 							<div id="loginName_message" style="clear:both;"></div>
 							<label id="loginName_error" class="null"></label>
@@ -259,7 +258,7 @@
 						<span class="label"><b class="ftx04">*</b>真实姓名：</span>
 						<div class="fl">
 							<input type="text" id="userName" name="name" class="text"
-								onfocus="formOnfocus(this.id);" onblur="formOnblur(this.id);">
+								onfocus="formOnfocus(this.id);" onblur="formOnblur(this.id);" value="${name}">
 							<span id="userName_ok"></span>
 							<div id="userName_message" style="clear:both;"></div>
 							<label id="userName_error" class="null"></label>
@@ -281,7 +280,7 @@
 						<span class="label"><b class="ftx04">*</b>详细地址：</span>
 						<div class="fl">
 							<input type="text" id="address" name="address" class="text"
-								onfocus="formOnfocus(this.id);" onblur="formOnblur(this.id);">
+								onfocus="formOnfocus(this.id);" onblur="formOnblur(this.id);" value="${address}">
 							<span id="address_ok"></span>
 							<div id="address_message" style="clear:both;"></div>
 							<label id="address_error" class="null"></label>
@@ -293,7 +292,7 @@
 						<span class="label"><b class="ftx04">*</b>联系电话：</span>
 						<div class="fl">
 							<input type="text" id="phone" name="phone" class="text"
-								onfocus="formOnfocus(this.id);" onblur="formOnblur(this.id);" />
+								onfocus="formOnfocus(this.id);" onblur="formOnblur(this.id);" value="${phone}" />
 							<span id="phone_ok"></span>
 							<div id="phone_message" style="clear:both;"></div>
 							<label id="phone_error" class="null"></label>
@@ -309,13 +308,14 @@
 								onfocus="formOnfocus(this.id);" onblur="formOnblur(this.id);" />
 							<label class="img"> <img
 								style="cursor:pointer;width:70px;height:25px;" title="验证码"
-								onclick="changFn();" id="JD_Verification1" src="verify.do">
+								onclick="changFn();" id="JD_Verification1" src="regisiter_vericode">
 							</label> <label class="ftx23" style="height:26px;">&nbsp;看不清？ <a
 								href="javascript:void(0)" onclick="changFn();">换一张</a> </label> <span
 								id="authcode_ok"></span>
 							<div id="authcode_message" style="clear:both;"></div>
 							<label id="authcode_error" class="null"></label>
 						</div>
+						
 					</div>
 					<!-- authcode end -->
 					<div class="item">
