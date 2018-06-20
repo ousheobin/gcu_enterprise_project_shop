@@ -33,7 +33,7 @@
 	﻿	<div class="nav">
 			<div class="w960 center">
 				<ul>
-					<li><a title="首页" href="index.do">首页</a></li>
+					<li><a title="首页" href="${ctx }">首页</a></li>
 					<c:forEach items="${firstArticleTypes}" var="firstArticleType" >
 						<li><a title="${firstArticleType.name}" href="${ctx}/index.do?typecode=${firstArticleType.code}">${firstArticleType.name}</a></li>
 					</c:forEach>
@@ -103,11 +103,11 @@
 										<c:forEach items="${order.items}" var="orderItem" varStatus="st">
 											<tr style="display:none;" id="book_${stat.index}_${st.index}" >
 												<td  align="center">
-													<a href="item.action?id=${orderItem.article.id}" title="${orderItem.article.title}">
+													<a href="${ctx }/items/${orderItem.article.id}.html" title="${orderItem.article.title}">
 	                  								<img width="60px" height="60px" alt="${orderItem.article.title}" src="${ctx }/images/article/${orderItem.article.image}" style="display: inline;"></a>
 	                  							</td>
 												<td  align="center">
-													<a href="item.action?id=${orderItem.article.id}" title="${orderItem.article.title}">${orderItem.article.title}</a>
+													<a href="${ctx }/items/${orderItem.article.id}.html" title="${orderItem.article.title}">${orderItem.article.title}</a>
 												</td>
 												<td  align="center">${orderItem.article.supplier}</td>
 												<td  align="center">${orderItem.article.price}</td>

@@ -77,7 +77,8 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public List<OrderEntity> getOrderByUser(UserEntity user) {
-		return orderDao.getOrderByUser(user);
+		 List<OrderEntity> list =  orderDao.getOrderByUser(user);
+		 return list;
 	}
 
 }

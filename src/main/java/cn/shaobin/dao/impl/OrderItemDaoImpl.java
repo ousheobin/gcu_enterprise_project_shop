@@ -1,5 +1,7 @@
 package cn.shaobin.dao.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -17,6 +19,11 @@ public class OrderItemDaoImpl implements OrderItemDao {
 	@Override
 	public void addOrderItem(OrderItemEntity item) {
 		sqlSessionTemplate.insert("OrderItemDao.addOrderItem",item);
+	}
+
+	@Override
+	public List<OrderItemEntity> getOrderItemByOrder(int orderId) {
+		return sqlSessionTemplate.selectList("OrderItemDao.getOrderItemByOrder",orderId);
 	}
 
 }

@@ -12,7 +12,7 @@
 	</insert>
 	
 	<select id="getOrderByUser" parameterType="Integer" resultMap="OrderEntityMap">
-		SELECT f_order_code,f_create_date,f_send_date,f_status,f_amount,f_user_id 
+		SELECT f_id,f_order_code,f_create_date,f_send_date,f_status,f_amount,f_user_id 
 		FROM tb_order 
 		WHERE f_user_id = #{userId};
 	</select>
